@@ -1,15 +1,29 @@
-import React from "react";
+import React, { useState } from "react";
 import { View, Text, Button, Image, TextInput } from "react-native";
+import Styles from "./Styles";
+import ImageChooser from "./ImageChooser";
 
-const PersonalInfo = () => {
+type PersonalInfoProps = {
+  onClosed: (name: string, image: string) => void;
+}
+
+const PersonalInfo = ({onClosed}: PersonalInfoProps) => {
+  const [name, setName] = useState("");
+  const [image, setImage] = useState("");
+
     return (
-       <View>
-        <Image source={require("../assets/wired-brain-coffee-logo.png")} />
-          <View>
-            <Text>Please enter your name</Text>
-            <TextInput />
+       <View style={Styles.personalInfoContainer}>
+        <Image style={Styles.logo} source={require("../assets/wired-brain-coffee-logo.png")} />
+          <View style={Styles.enterYourName}>
+            <Text style={Styles.nameText}>Please enter your name</Text>
+            <TextInput
+              style={Styles.nameTextInput}
+              onChangeText={(text) => setName(text)}
+              value={name}
+            />
           </View>
-          <Button title="Start Chatting!" />
+          <ImageChooser onChangeImage={(image) => setImage(image)} />
+          <Button title="Start Chatting!" onPress={() => onClosed(name, image)} />
        </View>
     );
 }
