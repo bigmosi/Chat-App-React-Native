@@ -5,7 +5,7 @@
     "slug": "chat",
     "version": "1.0.0",
     "orientation": "portrait",
-    "icon": "./assets/wired-brain-coffee-icon.png",
+    "icon": "../assets/wired-brain-coffee-icon.png",
     "userInterfaceStyle": "light",
     "splash": {
       "image": "./assets/wired-brain-coffee-logo.png",
